@@ -34,19 +34,19 @@ const theme = createTheme({
 })
 
 
-const TourCard = () => {
+const TourCard = ({tour}) => {
   return (
     <Grid item xs={3}>
       <ThemeProvider theme={theme}>
         <Paper elevation={3}>
           <img 
-            src="https://www.toniagara.com/blog/wp-content/uploads/2019/06/niagara-bus-tours-niagara-bus-tours-from-toronto.jpg" 
+            src={tour.image} 
             alt="" 
             className='img'
           />
           <Box paddingX={1}>
             <Typography variant='subtitle1' component='h2'>
-              Immerse into the Falls
+              {tour.name}
             </Typography>
             <Box
               sx={{
@@ -56,7 +56,7 @@ const TourCard = () => {
             >
               <AccessTime sx={{ width: 12.5 }} />
               <Typography variant='body2' component='p' marginLeft={0.5}>
-                5 hours
+                {tour.duration} hours
               </Typography>
             </Box>
             <Box
@@ -68,15 +68,15 @@ const TourCard = () => {
             >
               <Rating name='read-only' value={4.5} readOnly precision={0.5} size="small" />
               <Typography variant='body2' component='p' marginLeft={0.5}>
-                4.5
+                {tour.rating}
               </Typography>
               <Typography variant='body3' component='p' marginLeft={1.5}>
-                (655 reviews)
+                ({tour.numberOfReviews} reviews)
               </Typography>
             </Box>
             <Box>
               <Typography variant='h6' component='h3' marginTop={0}>
-                From C $147
+                From C ${tour.price}
               </Typography>
             </Box>
           </Box>
